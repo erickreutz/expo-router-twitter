@@ -8,12 +8,14 @@ type Group<T extends string> = `(${T})`;
 type SharedSegment = Group<"index"> | Group<"search"> | Group<"profile">;
 
 export function Tweet({ item }: { item: Post }) {
-  const [segment] = useSegments() as [SharedSegment];
+  const [tabs, segment] = useSegments<
+    ["(tabs)", "(index)"] | ["(tabs)", "(search)"] | ["(tabs)", "(profile)"]
+  >();
   const router = useRouter();
   return (
     <Pressable
       onPress={() => {
-        router.push(`/${segment}/post/${item.id}`);
+        router.push(`/${tabs}/${segment}/post/${item.id}`);
       }}
     >
       {({ hovered, pressed }) => (

@@ -65,7 +65,7 @@ export function ProfileScreen({ profile }: { profile: string }) {
               />
               {canEdit ? (
                 <Link
-                  href={`/${segment}/${user.user}/edit`}
+                  href={`/${user.user}/edit`}
                   style={{
                     backgroundColor: "dodgerblue",
                     paddingHorizontal: 12,

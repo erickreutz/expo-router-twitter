@@ -20,6 +20,9 @@
         }
       ]
     ],
+    "android": {
+      "package": "com.evanbacon.twitter"
+    },
     "ios": {
       "bundleIdentifier": "com.evanbacon.twitter",
       "infoPlist": {

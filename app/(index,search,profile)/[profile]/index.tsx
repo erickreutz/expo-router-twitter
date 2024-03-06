@@ -17,14 +17,9 @@ export default function Profile() {
   return <ProfileScreen profile={profile} />;
 }
 
-export function ProfileScreen({
-  profile,
-  canEdit = false,
-}: {
-  profile: string;
-  canEdit?: boolean;
-}) {
+export function ProfileScreen({ profile }: { profile: string }) {
   const user = users.find((user) => user.user === profile);
+  const canEdit = user?.user === "baconbrix";
 
   if (!user) {
     return (
@@ -69,7 +64,7 @@ export function ProfileScreen({
               />
               {canEdit ? (
                 <Link
-                  href="/(profile)/profile/edit"
+                  href="./edit"
                   style={{
                     backgroundColor: "dodgerblue",
                     paddingHorizontal: 12,

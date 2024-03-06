@@ -1,6 +1,7 @@
 import { Tabs } from "expo-router";
 import { Icon, IconName } from "@/components/icon";
 import Head from "expo-router/head";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 function makeIcon(icon: IconName, activeIcon: IconName) {
   return function (props: { size: number; color: string; focused: boolean }) {
@@ -17,7 +18,7 @@ function makeIcon(icon: IconName, activeIcon: IconName) {
 
 export default function RootLayout() {
   return (
-    <>
+    <GestureHandlerRootView style={{ flex: 1 }}>
       <Head>
         <title>Expo Twitter</title>
         <meta
@@ -62,6 +63,6 @@ export default function RootLayout() {
           }}
         />
       </Tabs>
-    </>
+    </GestureHandlerRootView>
   );
 }

@@ -17,7 +17,13 @@ export default function Profile() {
   return <ProfileScreen profile={profile} />;
 }
 
-export function ProfileScreen({ profile }: { profile: string }) {
+export function ProfileScreen({
+  profile,
+  canEdit = false,
+}: {
+  profile: string;
+  canEdit?: boolean;
+}) {
   const user = users.find((user) => user.user === profile);
 
   if (!user) {
@@ -50,10 +56,33 @@ export function ProfileScreen({ profile }: { profile: string }) {
               paddingTop: 24,
             }}
           >
-            <Image
-              source={{ uri: user.image }}
-              style={{ width: 64, height: 64, borderRadius: 64 / 2 }}
-            />
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
+            >
+              <Image
+                source={{ uri: user.image }}
+                style={{ width: 64, height: 64, borderRadius: 64 / 2 }}
+              />
+              {canEdit ? (
+                <Link
+                  href="/(profile)/profile/edit"
+                  style={{
+                    backgroundColor: "dodgerblue",
+                    paddingHorizontal: 12,
+                    paddingVertical: 8,
+                    borderRadius: 8,
+                    color: "white",
+                    fontSize: 12,
+                  }}
+                >
+                  Edit profile
+                </Link>
+              ) : null}
+            </View>
             <View>
               <Text style={{ fontSize: 32, fontWeight: "bold" }}>
                 {user.name}

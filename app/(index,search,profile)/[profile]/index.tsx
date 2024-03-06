@@ -1,4 +1,4 @@
-import { Link, Stack, useLocalSearchParams } from "expo-router";
+import { Link, Stack, useLocalSearchParams, useSegments } from "expo-router";
 import Head from "expo-router/head";
 import { Image, Text, View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
@@ -20,6 +20,7 @@ export default function Profile() {
 export function ProfileScreen({ profile }: { profile: string }) {
   const user = users.find((user) => user.user === profile);
   const canEdit = user?.user === "baconbrix";
+  const [segment] = useSegments<["(index)" | "(search)" | "(profile)"]>();
 
   if (!user) {
     return (
@@ -64,7 +65,7 @@ export function ProfileScreen({ profile }: { profile: string }) {
               />
               {canEdit ? (
                 <Link
-                  href="./edit"
+                  href={`/${segment}/${user.user}/edit`}
                   style={{
                     backgroundColor: "dodgerblue",
                     paddingHorizontal: 12,

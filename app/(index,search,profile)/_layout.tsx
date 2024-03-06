@@ -16,7 +16,10 @@ export default function DynamicLayout() {
           }
         },
       }}
-    />
+    >
+      {/* This breaks the tabs */}
+      {/* <Stack.Screen name="[profile]/edit" options={{ presentation: "modal" }} /> */}
+    </Stack>
   );
 }
 
